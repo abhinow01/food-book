@@ -24,15 +24,24 @@ const RecipeDetails = () => {
   }, [recipeId]);
 
   if (!recipeDetails) {
-    return <div>Loading...</div>;
+    return <div className='flex justify-center items-center align-middle'>Loading...</div>;
   }
+
+  // Function to convert HTML string to plain text
+  const decodeHtml = (html) => {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+  };
 
   return (
     <div className='flex items-center justify-center'>
-      <div className='w-4/5'>
+      <div className='w-full max-w-4xl px-4'>
         <h2 className='text-3xl font-bold mb-4'>{recipeDetails.title}</h2>
-        <img src={recipeDetails.image} alt={recipeDetails.title} className='w-4/5 h-1/5 mb-4' />
-        <div>
+        <div className='flex justify-center mb-4'>
+          <img src={recipeDetails.image} alt={recipeDetails.title} className='max-w-full h-auto rounded-lg ' style={{ maxHeight: '300px' }} />
+        </div>
+        <div className='mb-4'>
           <h3 className='text-xl font-semibold mb-2'>Ingredients:</h3>
           <ul className='list-disc pl-6'>
             {recipeDetails.extendedIngredients.map(ingredient => (
@@ -40,9 +49,9 @@ const RecipeDetails = () => {
             ))}
           </ul>
         </div>
-        <div className='p-2 border border-b flex flex-col rounded-lg mb-4 '>
+        <div className='p-4 border border-gray-300 rounded-lg mb-4'>
           <h3 className='text-xl font-semibold mb-2'>Instructions:</h3>
-          <p className='p-2'>{recipeDetails.instructions}</p>
+          <p className='p-2' dangerouslySetInnerHTML={{ __html: decodeHtml(recipeDetails.instructions) }}></p>
         </div>
       </div>
     </div>

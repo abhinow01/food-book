@@ -12,7 +12,7 @@ const Navbar = () => {
     <div className=' w-4/5 h-auto border border-b rounded-3xl flex flex-row justify-between p-4 m-4 items-center '>
         <div className='text-bold text-lg  '><button onClick={goHome}>Cook's delight</button></div>
         <div className='flex justify-center'>
-        <div > <button className='capitalize text-md text-gray-400 p-2 hover:text-zinc-900 '>home</button></div>
+        <div > <button className='capitalize text-md text-gray-400 p-2 hover:text-zinc-900 ' onClick={goHome}>home</button></div>
         <div > <button className='capitalize text-md text-gray-400 p-2 hover:text-zinc-900'>recipies</button></div>
         <div > <button className='capitalize text-md text-gray-400 p-2 hover:text-zinc-900'>cooking tips</button></div>
         <div > <button className='capitalize text-md text-gray-400 p-2 hover:text-zinc-900 '>About us</button></div>
