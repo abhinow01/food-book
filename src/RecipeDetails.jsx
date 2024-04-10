@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 const RecipeDetails = () => {
   const { recipeId } = useParams();
   const [recipeDetails, setRecipeDetails] = useState(null);
-
+  
   useEffect(() => {
     const fetchRecipeDetails = async () => {
       try {
